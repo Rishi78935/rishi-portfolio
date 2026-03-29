@@ -227,7 +227,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: 80px;
+      padding-top: 100px;
       padding-bottom: var(--space-16);
       position: relative;
     }
@@ -336,6 +336,8 @@
       display: flex;
       gap: var(--space-12);
       margin-top: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border);
       opacity: 0;
       animation: fadeUp 0.9s var(--ease-out) 0.6s forwards;
     }
@@ -768,6 +770,12 @@
        RESPONSIVE
     ===================== */
     @media (max-width: 768px) {
+      #hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: var(--space-12);
+      }
+      .hero-stats { gap: var(--space-8); }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
 
@@ -868,21 +876,21 @@
         </a>
       </div>
 
-    </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">8.2</div>
+          <div class="stat-label">CGPA / 10</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Live Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">ESP32</div>
+          <div class="stat-label">Primary MCU</div>
+        </div>
+      </div>
 
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-number">8.2</div>
-        <div class="stat-label">CGPA / 10</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">3+</div>
-        <div class="stat-label">Live Projects</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">ESP32</div>
-        <div class="stat-label">Primary MCU</div>
-      </div>
     </div>
   </div>
 </section>
