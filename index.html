@@ -774,43 +774,118 @@
     }
 
     /* =====================
-       RESPONSIVE
+       RESPONSIVE — TABLET
     ===================== */
-    @media (max-width: 768px) {
-      #hero {
-        min-height: auto;
-        padding-top: 100px;
-        padding-bottom: var(--space-12);
-      }
-      .hero-stats { gap: var(--space-8); }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-
-      .stat-item { text-align: left; }
-
-      .projects-grid { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
       .project-card.featured {
-        grid-column: 1;
+        grid-column: 1 / -1;
         grid-template-columns: 1fr;
       }
       .project-card.featured .project-visual { aspect-ratio: 16/9; }
-
-      .about-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-
-      .section-header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
-
-      .footer-inner { flex-direction: column; gap: var(--space-6); align-items: flex-start; }
-      .footer-links { flex-wrap: wrap; gap: var(--space-4); }
-      .footer-divider { display: none; }
-
-      .hero-name { font-size: clamp(3rem, 13vw, 4.5rem); }
     }
 
-    @media (max-width: 480px) {
-      section { padding: var(--space-16) 0; }
-      .project-card { padding: var(--space-6); }
+    /* =====================
+       RESPONSIVE — MOBILE (portrait phones)
+    ===================== */
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      /* Hero */
+      #hero {
+        min-height: auto;
+        padding-top: 90px;
+        padding-bottom: var(--space-12);
+      }
+      .hero-content { max-width: 100%; }
+      .hero-name {
+        font-size: clamp(2.4rem, 10vw, 3.8rem);
+        line-height: 1;
+        margin-bottom: var(--space-4);
+      }
+      .hero-tagline {
+        font-size: 0.95rem;
+        margin-bottom: var(--space-8);
+        max-width: 100%;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+      }
+      .hero-stats {
+        gap: var(--space-6);
+        flex-wrap: wrap;
+        margin-top: var(--space-8);
+        padding-top: var(--space-6);
+      }
+      .stat-item { text-align: left; min-width: 80px; }
+      .stat-number { font-size: 1.6rem; }
+
+      /* Sections */
+      section { padding: var(--space-12) 0; }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+        margin-bottom: var(--space-8);
+      }
+
+      /* Projects */
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-card {
+        padding: var(--space-6);
+      }
+      .project-card.featured {
+        grid-column: 1;
+        grid-template-columns: 1fr;
+        padding: var(--space-6);
+      }
+      .project-card.featured .project-title { font-size: 1.5rem; }
+      .project-visual { aspect-ratio: 16/9; }
+
+      /* About */
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      .about-text { font-size: 1.2rem; }
+
+      /* Footer */
+      .footer-inner {
+        flex-direction: column;
+        gap: var(--space-6);
+        align-items: flex-start;
+      }
+      .footer-links { flex-wrap: wrap; gap: var(--space-4); }
+      .footer-divider { display: none; }
+    }
+
+    /* =====================
+       RESPONSIVE — SMALL PHONES (≤400px)
+    ===================== */
+    @media (max-width: 400px) {
+      .container { padding: 0 var(--space-4); }
+      .hero-name { font-size: 2.2rem; }
+      .hero-eyebrow { margin-bottom: var(--space-4); }
+      .btn-primary, .btn-ghost { font-size: 0.68rem; }
+      .project-card { padding: var(--space-4); }
+      .modal-header, .modal-body { padding: var(--space-4); }
       .modal { border-radius: var(--radius-md); }
-      .modal-header, .modal-body { padding: var(--space-6); }
+      .stat-number { font-size: 1.4rem; }
+    }
+
+    /* =====================
+       PORTRAIT PHONES — extra safety
+    ===================== */
+    @media (max-width: 768px) and (orientation: portrait) {
+      .projects-grid { grid-template-columns: 1fr !important; }
+      .project-card.featured { grid-template-columns: 1fr !important; }
+      .about-grid { grid-template-columns: 1fr !important; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
