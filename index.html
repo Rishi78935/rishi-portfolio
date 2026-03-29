@@ -87,12 +87,16 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(20px);
       transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    /* Fallback: if JS disabled or observer fails, still show content */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
     }
 
     /* =====================
@@ -219,13 +223,13 @@
        HERO
     ===================== */
     #hero {
-      min-height: 100svh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding-top: 80px;
+      padding-bottom: var(--space-16);
       position: relative;
-      overflow: hidden;
     }
 
     .hero-grid-bg {
@@ -329,15 +333,13 @@
     .btn-ghost:hover svg { transform: translateX(3px); }
 
     .hero-stats {
-      position: absolute;
-      bottom: var(--space-12);
-      right: 0;
       display: flex;
       gap: var(--space-12);
+      margin-top: var(--space-12);
       opacity: 0;
       animation: fadeUp 0.9s var(--ease-out) 0.6s forwards;
     }
-    .stat-item { text-align: right; }
+    .stat-item { text-align: left; }
     .stat-number {
       font-family: var(--font-serif);
       font-size: 2rem;
@@ -712,8 +714,11 @@
 
     .footer-links {
       display: flex;
+      align-items: center;
       gap: var(--space-6);
     }
+
+    /* Text links (GitHub, Email) */
     .footer-link {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -723,6 +728,33 @@
       transition: color 0.2s;
     }
     .footer-link:hover { color: var(--ink); }
+
+    /* Icon links (LinkedIn, Instagram) */
+    .footer-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+    }
+    .footer-icon-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .footer-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      opacity: 0.65;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .footer-icon:hover {
+      opacity: 1;
+      color: var(--ink);
+    }
+    .footer-icon svg {
+      display: block;
+    }
 
     /* =====================
        ANIMATIONS
@@ -739,14 +771,6 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
 
-      .hero-stats {
-        position: relative;
-        bottom: unset;
-        right: unset;
-        margin-top: var(--space-12);
-        justify-content: flex-start;
-        gap: var(--space-8);
-      }
       .stat-item { text-align: left; }
 
       .projects-grid { grid-template-columns: 1fr; }
@@ -761,6 +785,8 @@
       .section-header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
 
       .footer-inner { flex-direction: column; gap: var(--space-6); align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: var(--space-4); }
+      .footer-divider { display: none; }
 
       .hero-name { font-size: clamp(3rem, 13vw, 4.5rem); }
     }
@@ -782,7 +808,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#projects" onclick="closeMobile()">Projects</a>
   <a href="#about" onclick="closeMobile()">About</a>
-  <a href="mailto:rishi.78935@gmail.com" onclick="closeMobile()">Contact</a>
+  <a href="/cdn-cgi/l/email-protection#deacb7adb6b7f0e9e6e7edeb9eb9b3bfb7b2f0bdb1b3" onclick="closeMobile()">Contact</a>
 </div>
 
 <!-- ========================
@@ -795,7 +821,7 @@
       <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="mailto:rishi.78935@gmail.com">Contact</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#75071c061d1c5b424d4c4640351218141c195b161a18">Contact</a></li>
       </ul>
       <a class="nav-cta" href="https://github.com/Rishi78935" target="_blank">GitHub ↗</a>
       <div class="hamburger" id="hamburger" onclick="toggleMobile()">
@@ -1054,7 +1080,7 @@
           <div class="about-detail-row">
             <span class="about-detail-label">Contact</span>
             <span class="about-detail-value">
-              <a href="mailto:rishi.78935@gmail.com" style="border-bottom:1px solid var(--border); padding-bottom:1px;">rishi.78935@gmail.com</a>
+              <a href="/cdn-cgi/l/email-protection#b9cbd0cad1d0978e81808a8cf9ded4d8d0d597dad6d4" style="border-bottom:1px solid var(--border); padding-bottom:1px;"><span class="__cf_email__" data-cfemail="84f6edf7ecedaab3bcbdb7b1c4e3e9e5ede8aae7ebe9">[email&#160;protected]</span></a>
             </span>
           </div>
         </div>
@@ -1076,6 +1102,24 @@
       <div class="footer-links">
         <a class="footer-link" href="https://github.com/Rishi78935" target="_blank">GitHub ↗</a>
         <a class="footer-link" href="mailto:rishi.78935@gmail.com">Email ↗</a>
+        <div class="footer-divider"></div>
+        <div class="footer-icon-links">
+          <!-- LinkedIn -->
+          <a class="footer-icon" href="https://www.linkedin.com/in/rishikesh-a-71139b366/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-hover>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="4"/>
+              <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a class="footer-icon" href="https://instagram.com/rishi_.779" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-hover>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1104,7 +1148,7 @@
 <!-- ========================
      JAVASCRIPT
 ======================== -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ---- Project data ---- */
   const projects = {
     ahaar: {
@@ -1232,8 +1276,16 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
   revealEls.forEach(el => observer.observe(el));
+
+  /* Force-reveal anything already in viewport after a short delay */
+  setTimeout(() => {
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 100);
 
   /* ---- Custom cursor ---- */
   const cursor = document.getElementById('cursor');
@@ -1253,18 +1305,4 @@
   function toggleMobile() {
     menuOpen = !menuOpen;
     document.getElementById('mobileMenu').classList.toggle('open', menuOpen);
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-  }
-  function closeMobile() {
-    menuOpen = false;
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  /* ---- Stagger project cards ---- */
-  document.querySelectorAll('.project-card.reveal').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.1) + 's';
-  });
-</script>
-</body>
-</html>
+    document.body.style.overflow = menuO
