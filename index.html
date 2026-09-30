@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A. Rishikesh — Elec.Engineer</title>
+  <title>A Rishikesh — Electrical Engineering | Embedded Systems | Robotics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -756,6 +756,19 @@
       display: block;
     }
 
+
+    /* =====================
+       SKILLS / ENGINEERING PHILOSOPHY
+    ===================== */
+    #skills { background: var(--surface); }
+    .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; }
+    .skill-group { background:var(--bg); padding:var(--space-8); min-height:150px; }
+    .skill-group p { margin-top:var(--space-4); color:var(--ink); line-height:1.8; }
+    .philosophy { margin-top:var(--space-12); padding:var(--space-8); border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg); }
+    .philosophy p { font-family:var(--font-serif); font-size:clamp(1.7rem,4vw,2.5rem); margin:var(--space-3) 0; }
+    .philosophy span { color:var(--muted); max-width:680px; display:block; }
+    @media (max-width:700px) { .skills-grid { grid-template-columns:1fr; } }
+
     /* =====================
        ANIMATIONS
     ===================== */
@@ -910,7 +923,7 @@
       <span class="nav-logo">A. RISHIKESH</span>
       <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li>
         <li><a href="mailto:rishi.78935@gmail.com">Contact</a></li>
       </ul>
       <a class="nav-cta" href="https://github.com/Rishi78935" target="_blank">GitHub ↗</a>
@@ -930,17 +943,17 @@
     <div class="hero-content">
 
       <div class="hero-eyebrow">
-        <span class="label">Electrical Engineering · CVR College · 2028</span>
+        <span class="label">Electrical Engineering · CVR College · 2028 · Open to Internships</span>
       </div>
 
       <h1 class="hero-name">
-        A. Rishikesh<br/>
-        <em>Elec.Engineer</em>
+        A Rishikesh<br/>
+        <em>Embedded · Robotics · R&amp;D</em>
       </h1>
 
       <p class="hero-tagline">
-        I make hardware talk to software.<br/>
-        Embedded systems, spectral sensing, local AI — built from the ground up.
+        Electrical Engineering student focused on embedded systems, robotics, and electronics R&amp;D.<br/>
+        I build physical systems around sensors, control, firmware, and hardware.
       </p>
 
       <div class="hero-actions">
@@ -964,12 +977,12 @@
           <div class="stat-label">CGPA / 10</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Live Projects</div>
+          <div class="stat-number">2</div>
+          <div class="stat-label">Core Projects</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">ESP32</div>
-          <div class="stat-label">Primary MCU</div>
+          <div class="stat-number">8.2</div>
+          <div class="stat-label">CGPA / 10</div>
         </div>
       </div>
 
@@ -1023,16 +1036,16 @@
 
         <div class="project-meta">
           <div class="project-index">01 / Featured</div>
-          <div class="project-status">Active</div>
-          <h3 class="project-title">Ahaar Scanner</h3>
+          <div class="project-status">Working Prototype</div>
+          <h3 class="project-title">Aahaar Scanner: Portable Fruit Quality Sensing Device</h3>
           <p class="project-desc">
-            Portable embedded AI system that uses 8-channel spectral sensing to distinguish organic from chemically treated produce. Full pipeline: optics → hardware → data collection → on-device ML inference on ESP32-S3.
+            Portable fruit-quality sensing prototype combining spectral hardware, data acquisition, and on-device inference. Current validated work focuses on banana sensing with ESP32-S3, AS7341, and an earlier AS7265x prototype stage.
           </p>
           <div class="project-tags">
             <span class="tag">ESP32-S3</span>
             <span class="tag">AS7341</span>
             <span class="tag">AS7265x</span>
-            <span class="tag">On-Device ML</span>
+            <span class="tag">Embedded Inference</span>
             <span class="tag">C</span>
             <span class="tag">I2C</span>
           </div>
@@ -1041,53 +1054,6 @@
               <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-        </div>
-      </div>
-
-      <!-- AI Agent -->
-      <div class="project-card reveal" onclick="openModal('agent')" data-hover>
-        <div class="project-visual">
-          <div class="project-illustration">
-            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-              <rect width="300" height="200" fill="#f0ede8"/>
-              <!-- Terminal window -->
-              <rect x="30" y="25" width="240" height="150" rx="6" fill="#1a1916"/>
-              <rect x="30" y="25" width="240" height="22" rx="6" fill="#252320"/>
-              <circle cx="46" cy="36" r="4" fill="#e05252" opacity="0.7"/>
-              <circle cx="60" cy="36" r="4" fill="#e0b252" opacity="0.7"/>
-              <circle cx="74" cy="36" r="4" fill="#52a052" opacity="0.7"/>
-              <!-- Code lines -->
-              <rect x="44" y="58" width="80" height="6" rx="1" fill="#2d6a4f" opacity="0.9"/>
-              <rect x="130" y="58" width="50" height="6" rx="1" fill="#4a5bba" opacity="0.7"/>
-              <rect x="44" y="72" width="120" height="6" rx="1" fill="#6b6560" opacity="0.7"/>
-              <rect x="44" y="86" width="60" height="6" rx="1" fill="#b8a020" opacity="0.8"/>
-              <rect x="110" y="86" width="90" height="6" rx="1" fill="#6b6560" opacity="0.6"/>
-              <rect x="44" y="100" width="140" height="6" rx="1" fill="#6b6560" opacity="0.5"/>
-              <rect x="44" y="114" width="30" height="6" rx="1" fill="#2d6a4f" opacity="0.9"/>
-              <rect x="80" y="114" width="70" height="6" rx="1" fill="#9b9488" opacity="0.5"/>
-              <!-- Blinking cursor -->
-              <rect x="44" y="130" width="8" height="10" rx="1" fill="#f8f7f4" opacity="0.9">
-                <animate attributeName="opacity" values="0.9;0;0.9" dur="1.2s" repeatCount="indefinite"/>
-              </rect>
-            </svg>
-          </div>
-        </div>
-        <div class="project-index">02</div>
-        <div class="project-status building">Building</div>
-        <h3 class="project-title">AI Automation Agent</h3>
-        <p class="project-desc">
-          Fully offline autonomous agent using Ollama + Open Interpreter. Closes the loop on Arduino compile → upload → debug with AI-driven fix-and-retry. Runs overnight unattended.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Ollama</span>
-          <span class="tag">Open Interpreter</span>
-          <span class="tag">Python</span>
-          <span class="tag">RTX 2050</span>
-        </div>
-        <div class="project-arrow">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
         </div>
       </div>
 
@@ -1115,11 +1081,11 @@
             </svg>
           </div>
         </div>
-        <div class="project-index">03</div>
-        <div class="project-status building">Exploring</div>
-        <h3 class="project-title">Maglev Motor Experiment</h3>
+        <div class="project-index">02</div>
+        <div class="project-status building">Experimental Project</div>
+        <h3 class="project-title">Maglev: Electromagnetic Levitation &amp; PID Control</h3>
         <p class="project-desc">
-          Experimental research into near-zero-friction electromagnetic levitation for motor design. Investigating coil configurations, magnetic stabilization, and MCU-based control.
+          Experimental electromagnetic levitation system using Hall sensing, electromagnets, motor-control hardware, and PID feedback. A physical prototype has achieved levitation and remains under development.
         </p>
         <div class="project-tags">
           <span class="tag">Electromagnetics</span>
@@ -1132,6 +1098,30 @@
             <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
+      </div>
+
+      <!-- BMS / Planned -->
+      <div class="project-card reveal" onclick="openModal('bms')" data-hover>
+        <div class="project-visual"><div class="project-illustration">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <rect width="300" height="200" fill="#f0ede8"/>
+            <rect x="48" y="58" width="204" height="84" rx="6" fill="#e2ddd6" stroke="#c8c3ba"/>
+            <rect x="68" y="78" width="42" height="44" rx="3" fill="#1a1916"/>
+            <rect x="116" y="78" width="42" height="44" rx="3" fill="#1a1916"/>
+            <rect x="164" y="78" width="42" height="44" rx="3" fill="#1a1916"/>
+            <text x="89" y="104" text-anchor="middle" fill="#f8f7f4" font-family="monospace" font-size="9">CELL 1</text>
+            <text x="137" y="104" text-anchor="middle" fill="#f8f7f4" font-family="monospace" font-size="9">CELL 2</text>
+            <text x="185" y="104" text-anchor="middle" fill="#f8f7f4" font-family="monospace" font-size="9">CELL 3</text>
+          </svg>
+        </div></div>
+        <div class="project-index">03 / Planned</div>
+        <div class="project-status building">Planned</div>
+        <h3 class="project-title">3S Li-ion Battery Protection &amp; Monitoring System</h3>
+        <p class="project-desc">Planned 3S lithium-ion battery project focused on cell-voltage monitoring and essential battery protection functions.</p>
+        <div class="project-tags">
+          <span class="tag">3S Li-ion</span><span class="tag">Protection</span><span class="tag">Monitoring</span><span class="tag">Power Electronics</span>
+        </div>
+        <div class="project-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5-5" stroke="currentColor" stroke-width="1.5"/></svg></div>
       </div>
 
     </div>
@@ -1147,9 +1137,9 @@
       <div class="reveal">
         <div class="label" style="margin-bottom:1.5rem;">About</div>
         <p class="about-text">
-          I'm an EE undergrad who builds things that sit at the edge of hardware and intelligence.
-          <em>Sensors that think. Systems that close the loop.</em>
-          Not for grades — because the problem is interesting.
+          I'm an Electrical Engineering student focused on embedded systems, robotics, and electronics R&amp;D.
+          <em>I build physical systems, test them, and iterate from measured results.</em>
+          Currently open to engineering internships in Hyderabad.
         </p>
       </div>
 
@@ -1161,11 +1151,15 @@
           </div>
           <div class="about-detail-row">
             <span class="about-detail-label">Focus</span>
-            <span class="about-detail-value">Embedded AI, spectral sensing, autonomous systems</span>
+            <span class="about-detail-value">Embedded systems, robotics, electronics R&amp;D</span>
           </div>
           <div class="about-detail-row">
             <span class="about-detail-label">Hardware</span>
-            <span class="about-detail-value">ESP32-S3, Raspberry Pi Pico, NodeMCU ESP8266</span>
+            <span class="about-detail-value">ESP32-S3, ESP8266, Arduino Uno, Arduino UNO Q, Raspberry Pi Pico, Seeeduino XIAO</span>
+          </div>
+          <div class="about-detail-row">
+            <span class="about-detail-label">CGPA</span>
+            <span class="about-detail-value">8.2 / 10</span>
           </div>
           <div class="about-detail-row">
             <span class="about-detail-label">Contact</span>
@@ -1180,13 +1174,31 @@
 </section>
 
 <!-- ========================
+     SKILLS
+======================== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal"><div><div class="label" style="margin-bottom:0.5rem;">Technical Stack</div><h2 class="section-title">What I <em>work with.</em></h2></div></div>
+    <div class="skills-grid reveal">
+      <div class="skill-group"><div class="label">Embedded</div><p>C · C++ · Embedded C · ESP32 · Arduino · Raspberry Pi Pico · ESP8266</p></div>
+      <div class="skill-group"><div class="label">Electronics</div><p>Circuit Design · PCB Design · Sensor Systems · Power Systems · Motor Drivers</p></div>
+      <div class="skill-group"><div class="label">Robotics &amp; Control</div><p>DC Motors · Electromagnets · Hall Sensors · PID · PWM · Feedback Control</p></div>
+      <div class="skill-group"><div class="label">Digital Design</div><p>Verilog · SystemVerilog · Combinational Logic · Sequential Logic · FSMs · Testbenches</p></div>
+      <div class="skill-group"><div class="label">Interfaces</div><p>I²C · SPI · UART · ADC · GPIO · Bluetooth/BLE · Wi-Fi</p></div>
+      <div class="skill-group"><div class="label">Tools</div><p>EasyEDA · Proteus · MATLAB · Simulink · Arduino IDE · PlatformIO · VS Code · Jupyter Notebook</p></div>
+    </div>
+    <div class="philosophy reveal"><div class="label">Engineering Philosophy</div><p><strong>Measure → Build → Test → Iterate</strong></p><span>Turn electrical engineering concepts into working physical systems, validate them experimentally, and improve the design from evidence.</span></div>
+  </div>
+</section>
+
+<!-- ========================
      FOOTER
 ======================== -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-left">
-        <div class="footer-name">A. Rishikesh</div>
+        <div class="footer-name">A Rishikesh</div>
         <div class="footer-copy">Hyderabad, India · Built with intention</div>
       </div>
       <div class="footer-links">
@@ -1242,39 +1254,37 @@
   /* ---- Project data ---- */
   const projects = {
     ahaar: {
-      index: '01 / Featured · Active',
-      title: 'Ahaar Scanner',
+      index: '01 / Featured · Working Prototype',
+      title: 'Aahaar Scanner: Portable Fruit Quality Sensing Device',
       sections: [
-        { label: 'Problem', text: 'Consumers have no reliable, affordable way to detect chemical treatment or artificial ripening of fruits and vegetables at the point of purchase. Lab-based spectroscopy exists but is expensive and not portable.' },
-        { label: 'Approach', text: 'Build a portable spectral sensing system that captures the unique light-absorption fingerprint of produce across 8+ wavelength channels, then classify organic vs chemically treated using on-device ML inference — no cloud, no connectivity required.' },
-        { label: 'Implementation', text: 'Optics-first design using AS7341 (8-channel visible) and AS7265x (18-channel VIS+NIR+UV) sensors on ESP32-S3. Data pipeline: raw spectral values → normalization (constant: 30,600) → feature extraction → TinyML classifier. Full arduino-cli toolchain for compile/upload automation.' },
+        { label: 'Problem', text: 'Explore a portable way to study fruit quality using spectral sensing and embedded hardware.' },
+        { label: 'Approach', text: 'Build a portable spectral sensing system that captures the unique light-absorption fingerprint of produce across 8+ wavelength channels, then classify measured fruit characteristics with on-device inference.' },
+        { label: 'Implementation', text: 'Current hardware uses AS7341 on ESP32-S3; AS7265x was used in an earlier prototype stage. The working prototype includes spectral acquisition, dataset collection, feature processing, and on-device inference.' },
         { label: 'Stack', text: 'ESP32-S3 · AS7341 · AS7265x · C · I2C · Spectral Sensing · On-Device ML · arduino-cli' },
-        { label: 'Status', text: 'Active development. Hardware validated. Data collection phase ongoing. ML model training next.' }
-      ]
-    },
-    agent: {
-      index: '02 · Building',
-      title: 'AI Automation Agent',
-      sections: [
-        { label: 'Problem', text: 'Iterating on embedded firmware is slow — write, compile, flash, observe, repeat. The feedback loop takes manual attention and breaks flow, especially for overnight batch experiments.' },
-        { label: 'Approach', text: 'Build a fully local AI agent that autonomously closes the firmware development loop: writes code, compiles via arduino-cli, flashes to ESP32-S3, reads serial output, identifies errors, and re-attempts — all without human intervention.' },
-        { label: 'Implementation', text: 'Ollama local LLM stack (qwen2.5-coder:7b, deepseek-r1:7b, llama3.2:3b) running on MSI Cyborg (Intel i5-12450H, 16GB RAM, RTX 2050 4GB VRAM). Open Interpreter for autonomous execution. Windows Task Scheduler for overnight batch runs. Telegram bot architecture for remote monitoring and command dispatch.' },
-        { label: 'Stack', text: 'Ollama · Open Interpreter · Python · arduino-cli · ESP32-S3 · qwen2.5-coder:7b · deepseek-r1:7b · RTX 2050' },
-        { label: 'Status', text: 'Active build. Core agent loop functional. Integrating Telegram remote control and Gmail routing.' }
+        { label: 'Status', text: 'Working prototype. Current validated dataset work focuses on banana; measured performance figures are not yet published.' }
       ]
     },
     maglev: {
-      index: '03 · Exploring',
-      title: 'Maglev Motor Experiment',
+      index: '02 · Experimental Project',
+      title: 'Maglev: Electromagnetic Levitation & PID Control',
       sections: [
         { label: 'Problem', text: 'Conventional motors suffer from friction losses at bearings and brushes. Magnetic levitation eliminates mechanical contact — but stable, controllable levitation in a motor context is a hard control problem.' },
         { label: 'Approach', text: 'Research-driven experiment: investigate coil geometries and magnetic configurations that allow a rotor to levitate stably, then apply MCU-based feedback control using Hall sensors to maintain equilibrium under load variations.' },
         { label: 'Implementation', text: 'Hall sensor arrays for rotor position measurement. Coil driver circuits with PWM-based current control. PID controller implemented on microcontroller with dead-zone handling. Stable linear model identification from control dataset via curve fitting. Custom PCB under design.' },
         { label: 'Stack', text: 'Electromagnetics · Hall Sensors · PID Control · PWM · PCB Design · MCU Firmware · C' },
-        { label: 'Status', text: 'Exploratory phase. Coil configurations tested. Control model identified. PCB design in progress.' }
+        { label: 'Status', text: 'Experimental project. Physical levitation achieved; development continues.' }
       ]
     }
-  };
+    bms: {
+      index: '03 · Planned',
+      title: '3S Li-ion Battery Protection & Monitoring System',
+      sections: [
+        { label: 'Goal', text: 'Develop a compact 3S lithium-ion battery protection and monitoring system for a three-cell series pack.' },
+        { label: 'Focus', text: 'Cell-voltage monitoring and essential battery protection functions, with the design refined as hardware development begins.' },
+        { label: 'Status', text: 'Planned. Hardware development has not started yet.' }
+      ]
+    }
+    };
 
   /* ---- Modal — exposed on window so inline onclick always works ---- */
   window.openModal = function(id) {
