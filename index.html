@@ -3,547 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080808">
 <meta name="description" content="A. Rishikesh — Electrical Engineering, embedded systems, sensing, control and electronics.">
 <title>RISHI / ENGINEERING SYSTEMS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --bg:#070707;--panel:#0d0d0d;--panel2:#111;
-  --line:#202020;--line2:#303030;
-  --white:#f0f0f0;--text:#c5c5c5;--muted:#737373;--dim:#454545;
-  --max:1220px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;
-  overflow-x:hidden;line-height:1.5
-}
-body:before{
-  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background:
-    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-  background-size:50px 50px;
-  mask-image:linear-gradient(to bottom,#000 0%,transparent 85%);
-}
-body:after{
-  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(circle at 70% 15%,rgba(255,255,255,.035),transparent 30%);
-}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-::selection{background:#eee;color:#000}
-::-webkit-scrollbar{width:7px}
-::-webkit-scrollbar-track{background:#070707}
-::-webkit-scrollbar-thumb{background:#2b2b2b}
-
-.mono{font-family:"IBM Plex Mono",monospace}
-.container{width:min(var(--max),calc(100% - 64px));margin:auto}
-
-/* NAV */
-.nav{
-  position:fixed;top:0;left:0;right:0;height:70px;z-index:100;
-  border-bottom:1px solid #191919;background:rgba(7,7,7,.86);
-  backdrop-filter:blur(18px)
-}
-.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;width:min(var(--max),calc(100% - 64px));margin:auto}
-.brand{font:600 13px "IBM Plex Mono";letter-spacing:.08em;color:#eee}
-.brand i{font-style:normal;color:#444}
-.nav-links{display:flex;gap:27px}
-.nav-links a{font:10px "IBM Plex Mono";letter-spacing:.08em;color:#666;transition:.2s}
-.nav-links a:hover,.nav-links a.active{color:#eee}
-.nav-status{display:flex;align-items:center;gap:8px;font:9px "IBM Plex Mono";color:#666}
-.status-dot{width:6px;height:6px;border-radius:50%;background:#aaa;box-shadow:0 0 8px #aaa}
-
-/* HERO */
+:root{--bg:#070707;--p:#0d0d0d;--p2:#111;--line:#222;--line2:#343434;--w:#eee;--t:#aaa;--m:#666;--d:#414141;--max:1220px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--t);font-family:Inter,Arial,sans-serif;line-height:1.5;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(#fff0003 1px,transparent 1px),linear-gradient(90deg,#fff0003 1px,transparent 1px);background-size:50px 50px}
+a{color:inherit;text-decoration:none}button,input{font:inherit}::selection{background:#eee;color:#000}
+::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:#070707}::-webkit-scrollbar-thumb{background:#2b2b2b}
+.mono{font-family:"IBM Plex Mono",monospace}.container{width:min(var(--max),calc(100% - 64px));margin:auto}
+.nav{position:fixed;top:0;left:0;right:0;height:70px;z-index:100;border-bottom:1px solid #191919;background:#070707dd;backdrop-filter:blur(18px)}
+.navin{height:100%;display:flex;align-items:center;justify-content:space-between;width:min(var(--max),calc(100% - 64px));margin:auto}
+.brand{font:600 13px "IBM Plex Mono";letter-spacing:.08em;color:#eee}.brand i{color:#444;font-style:normal}
+.links{display:flex;gap:26px}.links a{font:10px "IBM Plex Mono";color:#666}.links a:hover,.links a.active{color:#eee}
+.navright{display:flex;align-items:center;gap:12px}.online{font:9px "IBM Plex Mono";color:#666}.online b{display:inline-block;width:6px;height:6px;border-radius:50%;background:#aaa;margin-right:7px}
+.cmdkey{border:1px solid #282828;padding:5px 7px;color:#555;font:9px "IBM Plex Mono";cursor:pointer}.cmdkey:hover{color:#ddd;border-color:#555}
 .hero{padding:145px 0 70px;min-height:760px;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
-.eyebrow{font:10px "IBM Plex Mono";color:#666;letter-spacing:.18em;margin-bottom:24px}
-.hero-title{font-size:clamp(65px,8.5vw,116px);line-height:.83;letter-spacing:-.075em;color:#eee;font-weight:600}
-.hero-title .dim{color:#454545}
-.hero-copy{max-width:570px;color:#777;font-size:14px;line-height:1.9;margin-top:30px}
-.hero-actions{display:flex;gap:9px;margin-top:31px}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border:1px solid #2b2b2b;font:10px "IBM Plex Mono";transition:.2s}
-.btn.primary{background:#e9e9e9;color:#080808;border-color:#e9e9e9}
-.btn:hover{border-color:#666;color:#fff}
-.btn.primary:hover{background:#fff;color:#000}
-
-/* ENGINEERING CONSOLE */
-.console{border:1px solid #252525;background:#0b0b0b;box-shadow:0 35px 90px #000}
-.console-head{height:39px;border-bottom:1px solid #202020;display:flex;align-items:center;padding:0 13px;gap:6px}
-.cdot{width:7px;height:7px;border-radius:50%;background:#333}
-.console-head span{margin-left:8px;font:9px "IBM Plex Mono";color:#555}
-.console-body{padding:22px;font:10px/2 "IBM Plex Mono"}
-.line{display:flex;justify-content:space-between;border-bottom:1px solid #151515;padding:3px 0}
-.line span:first-child{color:#555}
-.line span:last-child{color:#bbb}
-.console-section{color:#777;margin:14px 0 5px}
-.console-graph{height:100px;margin-top:14px;border:1px solid #1c1c1c;background:
-  linear-gradient(#ffffff08 1px,transparent 1px),
-  linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:20px 20px}
-.console-graph svg{width:100%;height:100%}
-.wave{fill:none;stroke:#aaa;stroke-width:1.5;stroke-dasharray:4 5;animation:dash 4s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-45}}
-.cursor{display:inline-block;width:6px;height:11px;background:#aaa;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-
-/* TICKER */
-.ticker{border-top:1px solid #222;border-bottom:1px solid #222;overflow:hidden;white-space:nowrap}
-.ticker-inner{display:inline-flex;gap:38px;padding:13px 0;animation:scroll 28s linear infinite}
-.ticker span{font:9px "IBM Plex Mono";color:#4f4f4f}
-.ticker b{color:#777;font-weight:400}
-@keyframes scroll{to{transform:translateX(-50%)}}
-
-/* SECTION */
-section{padding:115px 0}
-.section-top{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #222;padding-bottom:17px;margin-bottom:28px}
-.section-id{font:9px "IBM Plex Mono";color:#4b4b4b;margin-bottom:7px;letter-spacing:.1em}
-.section-title{font-size:37px;letter-spacing:-.055em;color:#e7e7e7;font-weight:500}
-.section-note{max-width:420px;color:#666;font-size:11px;line-height:1.7}
-
-/* PROJECTS */
-.project-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-.project{
-  position:relative;background:#0b0b0b;border:1px solid #202020;
-  min-height:390px;padding:25px;overflow:hidden;cursor:pointer;transition:.3s
-}
-.project:hover{border-color:#444;background:#0e0e0e;transform:translateY(-4px)}
-.project:nth-child(1){grid-column:span 7}
-.project:nth-child(2){grid-column:span 5}
-.project:nth-child(3){grid-column:span 5}
-.project:nth-child(4){grid-column:span 7}
-.project-index{font:9px "IBM Plex Mono";color:#555}
-.project-kind{margin-top:7px;font:8px "IBM Plex Mono";color:#555;letter-spacing:.13em}
-.project h3{font-size:27px;letter-spacing:-.04em;color:#e5e5e5;font-weight:500;margin-top:45px}
-.project p{max-width:490px;margin-top:12px;color:#707070;font-size:12px;line-height:1.75}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:20px}
-.tags span{padding:4px 7px;border:1px solid #252525;color:#5d5d5d;font:8px "IBM Plex Mono"}
-.project-arrow{position:absolute;right:22px;bottom:19px;color:#444;font-size:18px;transition:.2s}
-.project:hover .project-arrow{color:#ddd;transform:translate(4px,-4px)}
-.project-visual{position:absolute;right:18px;top:62px;width:48%;opacity:.28;pointer-events:none}
-.project-visual svg{width:100%;height:auto}
-.gridline{stroke:#252525;stroke-width:1}
-.signal{fill:none;stroke:#aaa;stroke-width:1.4;stroke-dasharray:5 6;animation:dash 5s linear infinite}
-.pulse-line{fill:none;stroke:#888;stroke-width:1}
-.battery{fill:none;stroke:#888;stroke-width:1}
-
-/* FILTER */
-.filters{display:flex;gap:6px;margin-bottom:16px}
-.filter{padding:7px 11px;background:transparent;border:1px solid #242424;color:#5d5d5d;cursor:pointer;font:9px "IBM Plex Mono"}
-.filter.active,.filter:hover{background:#e9e9e9;border-color:#e9e9e9;color:#050505}
-
-/* ABOUT */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.about-copy{color:#808080;font-size:14px;line-height:2}
-.about-copy strong{color:#ddd;font-weight:500}
-.specs{border-top:1px solid #222}
-.spec{display:grid;grid-template-columns:130px 1fr;padding:13px 0;border-bottom:1px solid #222}
-.spec dt{font:9px "IBM Plex Mono";color:#505050}
-.spec dd{font-size:11px;color:#aaa}
-
-/* PROCESS */
-.process{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid #222}
-.process-item{padding:24px;border-right:1px solid #222;border-top:1px solid #222;border-bottom:1px solid #222;min-height:160px}
-.process-item .n{font:9px "IBM Plex Mono";color:#4c4c4c}
-.process-item h4{font-size:15px;font-weight:500;color:#ddd;margin-top:28px}
-.process-item p{font-size:10px;color:#666;line-height:1.7;margin-top:9px}
-
-/* LAB */
-.lab{border:1px solid #242424;background:#0b0b0b;padding:26px}
-.lab-grid{display:grid;grid-template-columns:230px 1fr;gap:28px}
-.control{margin-bottom:23px}
-.control-label{display:flex;justify-content:space-between;margin-bottom:9px;font:10px "IBM Plex Mono";color:#666}
-.control-label b{font-weight:400;color:#ccc}
-input[type=range]{appearance:none;width:100%;height:2px;background:#333;outline:none}
-input[type=range]::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:#ddd;cursor:pointer}
-.lab-status{padding:11px;border:1px solid #222;font:9px "IBM Plex Mono";color:#555}
-.lab-status b{color:#ddd;font-weight:400}
-.chart{width:100%;height:280px;border:1px solid #1d1d1d;background:
-linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);background-size:28px 28px}
-#response{fill:none;stroke:#ddd;stroke-width:2}
-
-/* STACK */
-.stack{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid #222;border-top:1px solid #222}
-.stack-cell{min-height:125px;padding:22px;border-right:1px solid #222;border-bottom:1px solid #222;transition:.2s}
-.stack-cell:hover{background:#101010}
-.stack-cell span{font:9px "IBM Plex Mono";color:#4c4c4c}
-.stack-cell h4{font-size:14px;color:#ddd;font-weight:500;margin-top:18px}
-
-/* CONTACT */
-.contact{min-height:650px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.contact .section-id{margin-bottom:18px}
-.contact h2{font-size:clamp(52px,8vw,98px);line-height:.9;letter-spacing:-.075em;color:#eee;font-weight:500}
-.contact p{max-width:470px;margin-top:22px;color:#666;font-size:12px}
-.contact-links{display:flex;gap:7px;margin-top:29px}
-.contact-links a{border:1px solid #292929;padding:10px 13px;color:#707070;font:9px "IBM Plex Mono";transition:.2s}
-.contact-links a:hover{color:#fff;border-color:#666}
-
-/* MODAL */
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;background:#000d;backdrop-filter:blur(14px);z-index:500}
-.modal.open{display:flex}
-.modal-box{width:min(720px,100%);max-height:88vh;overflow:auto;background:#0d0d0d;border:1px solid #303030;padding:31px}
-.modal-close{float:right;border:0;background:none;color:#555;font-size:24px;cursor:pointer}
-.modal-close:hover{color:#fff}
-.modal-box h2{font-size:34px;font-weight:500;letter-spacing:-.05em;color:#eee}
-.modal-box>p{margin-top:17px;color:#858585;font-size:13px;line-height:1.9}
-.modal-details{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:25px}
-.modal-detail{padding:14px;border:1px solid #222;font:9px/1.7 "IBM Plex Mono";color:#777}
-.modal-detail strong{display:block;color:#ccc;font-weight:400;margin-bottom:3px}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* MOBILE */
-@media(max-width:850px){
-  .container,.nav-inner{width:min(100% - 40px,var(--max))}
-  .nav-links,.nav-status{display:none}
-  .hero{grid-template-columns:1fr;padding-top:125px;gap:50px}
-  .project:nth-child(n){grid-column:span 12}
-  .project-visual{opacity:.15}
-  .about{grid-template-columns:1fr;gap:45px}
-  .process{grid-template-columns:repeat(2,1fr)}
-  .lab-grid{grid-template-columns:1fr}
-  .stack{grid-template-columns:repeat(2,1fr)}
-  .section-top{display:block}.section-note{margin-top:12px}
-}
-@media(max-width:520px){
-  .container,.nav-inner{width:calc(100% - 30px)}
-  .hero{padding-top:115px}
-  .hero-title{font-size:56px}
-  .process{grid-template-columns:1fr}
-  .stack{grid-template-columns:1fr}
-  .modal-details{grid-template-columns:1fr}
-  .spec{grid-template-columns:105px 1fr}
-}
+.eyebrow,.sectionid{font:9px "IBM Plex Mono";letter-spacing:.17em;color:#555}.eyebrow{margin-bottom:24px}
+h1{font-size:clamp(65px,8.5vw,116px);line-height:.83;letter-spacing:-.075em;color:#eee;font-weight:600}h1 span{color:#454545}
+.lead{max-width:580px;color:#777;font-size:14px;line-height:1.9;margin-top:30px}.actions{display:flex;gap:8px;margin-top:31px}
+.btn{display:inline-flex;padding:11px 15px;border:1px solid #2b2b2b;font:9px "IBM Plex Mono";cursor:pointer}.btn.primary{background:#e9e9e9;color:#080808;border-color:#e9e9e9}.btn:hover{border-color:#777;color:#fff}.btn.primary:hover{background:#fff;color:#000}
+.console{border:1px solid #252525;background:#0b0b0b;box-shadow:0 35px 90px #000}.chead{height:39px;border-bottom:1px solid #202020;display:flex;align-items:center;padding:0 13px;gap:6px}.dot{width:7px;height:7px;border-radius:50%;background:#333}.chead span{margin-left:8px;color:#555;font:9px "IBM Plex Mono"}.cbody{padding:20px;font:10px/2 "IBM Plex Mono"}.cline{display:flex;justify-content:space-between;border-bottom:1px solid #151515}.cline span:first-child{color:#555}.cline span:last-child{color:#bbb}.csection{color:#777;margin:13px 0 4px}.cgraph{height:90px;border:1px solid #1c1c1c;margin-top:12px;background:linear-gradient(#fff0006 1px,transparent 1px),linear-gradient(90deg,#fff0006 1px,transparent 1px);background-size:20px 20px}.cgraph svg{width:100%;height:100%}.wave{fill:none;stroke:#aaa;stroke-width:1.4;stroke-dasharray:5 6;animation:dash 4s linear infinite}@keyframes dash{to{stroke-dashoffset:-45}}.cursor{display:inline-block;width:6px;height:11px;background:#aaa;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.ticker{border-top:1px solid #222;border-bottom:1px solid #222;overflow:hidden;white-space:nowrap}.tick{display:inline-flex;gap:35px;padding:12px 0;animation:scroll 28s linear infinite}.tick span{font:9px "IBM Plex Mono";color:#4e4e4e}.tick b{color:#777;font-weight:400}@keyframes scroll{to{transform:translateX(-50%)}}
+section{padding:110px 0}.sectiontop{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #222;padding-bottom:17px;margin-bottom:28px}.sectionid{margin-bottom:7px}.sectiontitle{font-size:37px;letter-spacing:-.055em;color:#e7e7e7;font-weight:500}.note{max-width:430px;color:#666;font-size:11px;line-height:1.7}
+.filters{display:flex;gap:6px;margin-bottom:14px}.filter{padding:7px 11px;background:transparent;border:1px solid #242424;color:#5d5d5d;cursor:pointer;font:9px "IBM Plex Mono"}.filter.active,.filter:hover{background:#e9e9e9;border-color:#e9e9e9;color:#050505}
+.projects{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.project{position:relative;min-height:360px;padding:25px;background:#0b0b0b;border:1px solid #202020;overflow:hidden;cursor:pointer;transition:.25s}.project:hover{border-color:#444;background:#0f0f0f;transform:translateY(-4px)}.project:nth-child(1){grid-column:span 7}.project:nth-child(2){grid-column:span 5}.project:nth-child(3){grid-column:span 5}.project:nth-child(4){grid-column:span 7}.pindex{font:9px "IBM Plex Mono";color:#555}.pkind{margin-top:6px;font:8px "IBM Plex Mono";letter-spacing:.12em;color:#555}.project h3{margin-top:43px;font-size:27px;letter-spacing:-.04em;font-weight:500;color:#e5e5e5}.project p{margin-top:12px;max-width:500px;color:#707070;font-size:12px;line-height:1.75}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:20px}.tags span{padding:4px 7px;border:1px solid #252525;color:#5d5d5d;font:8px "IBM Plex Mono"}.arrow{position:absolute;right:22px;bottom:19px;color:#444;font-size:18px}.project:hover .arrow{color:#ddd;transform:translate(4px,-4px)}.visual{position:absolute;right:18px;top:60px;width:47%;opacity:.27;pointer-events:none}.visual svg{width:100%}.signal{fill:none;stroke:#aaa;stroke-width:1.4;stroke-dasharray:5 6;animation:dash 5s linear infinite}.gridline{stroke:#252525}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px}.aboutcopy{color:#808080;font-size:14px;line-height:2}.aboutcopy strong{color:#ddd;font-weight:500}.specs{border-top:1px solid #222}.spec{display:grid;grid-template-columns:130px 1fr;padding:13px 0;border-bottom:1px solid #222}.spec dt{font:9px "IBM Plex Mono";color:#505050}.spec dd{font-size:11px;color:#aaa}
+.process{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid #222}.process div{padding:24px;border-right:1px solid #222;border-top:1px solid #222;border-bottom:1px solid #222;min-height:155px}.process small{font:9px "IBM Plex Mono";color:#4c4c4c}.process h4{margin-top:27px;font-size:14px;color:#ddd;font-weight:500}.process p{margin-top:9px;font-size:10px;color:#666}
+.lab{border:1px solid #242424;background:#0b0b0b;padding:26px}.labgrid{display:grid;grid-template-columns:235px 1fr;gap:28px}.control{margin-bottom:22px}.clabel{display:flex;justify-content:space-between;margin-bottom:9px;font:10px "IBM Plex Mono";color:#666}.clabel b{color:#ccc;font-weight:400}input[type=range]{appearance:none;width:100%;height:2px;background:#333;outline:none}input[type=range]::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:#ddd;cursor:pointer}.status{border:1px solid #222;padding:11px;font:9px "IBM Plex Mono";color:#555}.status b{color:#ddd;font-weight:400}.chart{width:100%;height:270px;border:1px solid #1d1d1d;background:linear-gradient(#fff0007 1px,transparent 1px),linear-gradient(90deg,#fff0007 1px,transparent 1px);background-size:28px 28px}.chart path{fill:none;stroke:#ddd;stroke-width:2}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.metric{border:1px solid #222;padding:10px;font:9px "IBM Plex Mono";color:#555}.metric b{display:block;color:#ccc;font-size:13px;font-weight:400;margin-top:3px}
+.monitor{margin-top:13px;border:1px solid #222;background:#090909}.monitorbar{padding:10px 12px;border-bottom:1px solid #202020;display:flex;justify-content:space-between;font:9px "IBM Plex Mono";color:#555}.monitorbar button{background:none;border:0;color:#777;cursor:pointer}.monitorbar button:hover{color:#eee}.wavebox{height:130px}.wavebox svg{width:100%;height:100%}.monitor-info{display:flex;gap:15px;padding:9px 12px;border-top:1px solid #202020;font:9px "IBM Plex Mono";color:#555}.monitor-info b{color:#bbb;font-weight:400}
+.stack{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid #222;border-top:1px solid #222}.stackcell{min-height:120px;padding:22px;border-right:1px solid #222;border-bottom:1px solid #222;transition:.2s}.stackcell:hover{background:#101010}.stackcell span{font:9px "IBM Plex Mono";color:#4c4c4c}.stackcell h4{margin-top:18px;font-size:14px;color:#ddd;font-weight:500}
+.contact{min-height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.contact h2{font-size:clamp(52px,8vw,98px);line-height:.9;letter-spacing:-.075em;color:#eee;font-weight:500;margin-top:18px}.contact p{max-width:470px;margin-top:22px;color:#666;font-size:12px}.contactlinks{display:flex;gap:7px;margin-top:29px}.contactlinks a{border:1px solid #292929;padding:10px 13px;color:#707070;font:9px "IBM Plex Mono"}.contactlinks a:hover{color:#fff;border-color:#666}
+footer{border-top:1px solid #1d1d1d;padding:27px 0;color:#444;font:9px "IBM Plex Mono";display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(16px);transition:.65s}.reveal.show{opacity:1;transform:none}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:#000e;backdrop-filter:blur(12px);z-index:500}.modal.open{display:flex}.modalbox{width:min(720px,100%);max-height:88vh;overflow:auto;background:#0d0d0d;border:1px solid #333;padding:31px}.close{float:right;background:none;border:0;color:#555;font-size:24px;cursor:pointer}.close:hover{color:#fff}.modalbox h2{font-size:34px;font-weight:500;letter-spacing:-.05em;color:#eee}.modalbox>p{margin-top:16px;color:#858585;font-size:13px;line-height:1.9}.details{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:24px}.detail{border:1px solid #222;padding:13px;color:#777;font:9px/1.7 "IBM Plex Mono"}.detail strong{display:block;color:#ccc;font-weight:400;margin-bottom:3px}
+.command{position:fixed;inset:0;display:none;align-items:flex-start;justify-content:center;padding-top:16vh;background:#000b;backdrop-filter:blur(10px);z-index:700}.command.open{display:flex}.commandbox{width:min(620px,calc(100% - 30px));border:1px solid #363636;background:#0d0d0d;box-shadow:0 30px 100px #000}.commandinput{width:100%;background:#090909;border:0;border-bottom:1px solid #252525;outline:0;color:#eee;padding:17px;font:12px "IBM Plex Mono"}.commandlist{max-height:320px;overflow:auto}.commanditem{padding:13px 16px;border-bottom:1px solid #191919;cursor:pointer;font:10px "IBM Plex Mono";color:#777;display:flex;justify-content:space-between}.commanditem:hover,.commanditem.selected{background:#171717;color:#eee}.commanditem kbd{color:#444}
+.toast{position:fixed;right:20px;bottom:20px;z-index:800;padding:11px 14px;background:#eee;color:#080808;font:9px "IBM Plex Mono";transform:translateY(20px);opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:none;opacity:1}
+@media(max-width:850px){.container,.navin{width:calc(100% - 40px)}.links,.online{display:none}.hero{grid-template-columns:1fr;padding-top:120px;gap:50px}.project:nth-child(n){grid-column:span 12}.visual{opacity:.13}.about{grid-template-columns:1fr;gap:45px}.process{grid-template-columns:repeat(2,1fr)}.labgrid{grid-template-columns:1fr}.stack{grid-template-columns:repeat(2,1fr)}.sectiontop{display:block}.note{margin-top:12px}}
+@media(max-width:520px){.container,.navin{width:calc(100% - 30px)}h1{font-size:54px}.process,.stack{grid-template-columns:1fr}.details,.metrics{grid-template-columns:1fr}.spec{grid-template-columns:105px 1fr}}
 </style>
 </head>
-
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="#top" class="brand">RISHI<i>/EE</i></a>
-    <div class="nav-links">
-      <a href="#work">WORK</a>
-      <a href="#about">ABOUT</a>
-      <a href="#lab">LAB</a>
-      <a href="#stack">STACK</a>
-    </div>
-    <div class="nav-status"><i class="status-dot"></i>SYSTEM ONLINE</div>
-  </div>
-</nav>
+<nav><div class="navin">
+<a class="brand" href="#top">RISHI<i>/EE</i></a>
+<div class="links"><a href="#work">WORK</a><a href="#about">ABOUT</a><a href="#lab">LAB</a><a href="#stack">STACK</a></div>
+<div class="navright"><span class="online"><b></b>SYSTEM ONLINE</span><button class="cmdkey" id="openCmd" type="button">CTRL K</button></div>
+</div></nav>
 
 <main id="top">
 
 <section class="hero container">
-  <div class="reveal">
-    <div class="eyebrow">ELECTRICAL ENGINEERING / HARDWARE SYSTEMS</div>
-    <h1 class="hero-title">BUILD.<br>MEASURE.<br><span class="dim">ITERATE.</span></h1>
-    <p class="hero-copy">
-      A. Rishikesh. Electrical Engineering student building embedded systems,
-      sensor platforms, control systems and experimental electronics.
-      Hardware first. Measurements matter.
-    </p>
-    <div class="hero-actions">
-      <a class="btn primary" href="#work">EXPLORE SYSTEMS <span>↘</span></a>
-      <a class="btn" href="https://github.com/Rishi78935" target="_blank">GITHUB ↗</a>
-    </div>
-  </div>
-
-  <div class="console reveal">
-    <div class="console-head">
-      <i class="cdot"></i><i class="cdot"></i><i class="cdot"></i>
-      <span>/var/log/engineering</span>
-    </div>
-    <div class="console-body">
-      <div class="console-section">SYSTEM DIAGNOSTICS</div>
-      <div class="line"><span>PROCESSOR</span><span>ESP32 / MCU</span></div>
-      <div class="line"><span>SENSING</span><span>AS7341 / HALL</span></div>
-      <div class="line"><span>CONTROL</span><span>PID / PWM</span></div>
-      <div class="line"><span>INTERFACE</span><span>I²C / SPI / UART</span></div>
-      <div class="line"><span>LOGIC</span><span>VERILOG / SV</span></div>
-      <div class="console-section">CURRENT BUILD</div>
-      <div class="line"><span>MODE</span><span>PROTOTYPING</span></div>
-      <div class="line"><span>LOOP</span><span>MEASURE → TEST</span></div>
-      <div class="console-graph">
-        <svg viewBox="0 0 500 100" preserveAspectRatio="none">
-          <polyline class="wave" points="0,72 35,67 70,74 105,38 140,55 175,25 210,48 245,20 280,43 315,31 350,58 385,45 420,65 455,51 500,57"/>
-        </svg>
-      </div>
-      <div style="margin-top:12px;color:#555">$ ./iterate <span class="cursor"></span></div>
-    </div>
-  </div>
+<div class="reveal">
+<div class="eyebrow">ELECTRICAL ENGINEERING / HARDWARE SYSTEMS</div>
+<h1>BUILD.<br>MEASURE.<br><span>ITERATE.</span></h1>
+<p class="lead">A. Rishikesh. Electrical Engineering student building embedded systems, sensor platforms, control systems and experimental electronics.</p>
+<div class="actions"><a class="btn primary" href="#work">EXPLORE SYSTEMS ↘</a><button class="btn" id="heroCmd" type="button">OPEN TERMINAL</button></div>
+</div>
+<div class="console reveal">
+<div class="chead"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>/var/log/engineering</span></div>
+<div class="cbody">
+<div class="csection">SYSTEM DIAGNOSTICS</div>
+<div class="cline"><span>PROCESSOR</span><span>ESP32 / MCU</span></div>
+<div class="cline"><span>SENSING</span><span>AS7341 / HALL</span></div>
+<div class="cline"><span>CONTROL</span><span>PID / PWM</span></div>
+<div class="cline"><span>INTERFACE</span><span>I²C / SPI / UART</span></div>
+<div class="cline"><span>LOGIC</span><span>VERILOG / SV</span></div>
+<div class="csection">CURRENT BUILD</div>
+<div class="cline"><span>MODE</span><span>PROTOTYPING</span></div>
+<div class="cline"><span>LOOP</span><span>MEASURE → TEST</span></div>
+<div class="cgraph"><svg viewBox="0 0 500 100" preserveAspectRatio="none"><polyline class="wave" points="0,72 35,67 70,74 105,38 140,55 175,25 210,48 245,20 280,43 315,31 350,58 385,45 420,65 455,51 500,57"/></svg></div>
+<div style="margin-top:10px;color:#555">$ ./iterate <span class="cursor"></span></div>
+</div></div>
 </section>
 
-<div class="ticker">
-  <div class="ticker-inner">
-    <span><b>01</b> EMBEDDED SYSTEMS</span><span><b>02</b> SENSOR INTERFACING</span><span><b>03</b> CONTROL SYSTEMS</span><span><b>04</b> PCB DESIGN</span><span><b>05</b> DIGITAL LOGIC</span><span><b>06</b> POWER ELECTRONICS</span>
-    <span><b>01</b> EMBEDDED SYSTEMS</span><span><b>02</b> SENSOR INTERFACING</span><span><b>03</b> CONTROL SYSTEMS</span><span><b>04</b> PCB DESIGN</span><span><b>05</b> DIGITAL LOGIC</span><span><b>06</b> POWER ELECTRONICS</span>
-  </div>
-</div>
+<div class="ticker"><div class="tick">
+<span><b>01</b> EMBEDDED SYSTEMS</span><span><b>02</b> SENSOR INTERFACING</span><span><b>03</b> CONTROL SYSTEMS</span><span><b>04</b> PCB DESIGN</span><span><b>05</b> DIGITAL LOGIC</span><span><b>06</b> POWER ELECTRONICS</span>
+<span><b>01</b> EMBEDDED SYSTEMS</span><span><b>02</b> SENSOR INTERFACING</span><span><b>03</b> CONTROL SYSTEMS</span><span><b>04</b> PCB DESIGN</span><span><b>05</b> DIGITAL LOGIC</span><span><b>06</b> POWER ELECTRONICS</span>
+</div></div>
 
 <section id="work" class="container">
-  <div class="section-top reveal">
-    <div><div class="section-id">01 / SELECTED WORK</div><h2 class="section-title">Systems I've built</h2></div>
-    <p class="section-note">Projects where circuits, firmware, sensors and physical behaviour have to work together.</p>
-  </div>
+<div class="sectiontop reveal"><div><div class="sectionid">01 / SELECTED WORK</div><h2 class="sectiontitle">Systems I've built</h2></div><p class="note">Click a system to inspect its architecture, tools and current state.</p></div>
+<div class="filters reveal"><button class="filter active" data-filter="all">ALL</button><button class="filter" data-filter="sensing">SENSING</button><button class="filter" data-filter="control">CONTROL</button><button class="filter" data-filter="power">POWER</button></div>
+<div class="projects">
 
-  <div class="filters reveal">
-    <button class="filter active" data-filter="all">ALL</button>
-    <button class="filter" data-filter="sensing">SENSING</button>
-    <button class="filter" data-filter="control">CONTROL</button>
-    <button class="filter" data-filter="power">POWER</button>
-  </div>
+<article class="project reveal" data-category="sensing" data-project="aahaar"><div class="pindex">SYS-01</div><div class="pkind">SPECTRAL SENSING / EMBEDDED</div><h3>Aahaar Scanner</h3><p>Portable spectral sensing platform using controlled illumination, AS7341 sensing and ESP32-S3 processing.</p><div class="tags"><span>ESP32-S3</span><span>AS7341</span><span>I²C</span><span>TFT</span><span>DATA</span></div><div class="visual"><svg viewBox="0 0 500 230"><path class="signal" d="M0 175C35 155 45 165 75 150S115 95 145 125S180 45 215 105S250 60 285 105S325 40 360 115S405 85 440 140S470 100 500 120"/><line class="gridline" x1="0" y1="190" x2="500" y2="190"/></svg></div><div class="arrow">↗</div></article>
 
-  <div class="project-grid">
+<article class="project reveal" data-category="control" data-project="maglev"><div class="pindex">SYS-02</div><div class="pkind">ELECTROMAGNETICS / CONTROL</div><h3>Electromagnetic Maglev</h3><p>Closed-loop levitation using Hall feedback, electromagnet actuation, PWM and PID control.</p><div class="tags"><span>HALL</span><span>PWM</span><span>PID</span><span>SIMULINK</span></div><div class="visual"><svg viewBox="0 0 450 250"><rect x="90" y="32" width="270" height="28" fill="none" stroke="#777"/><circle cx="225" cy="130" r="31" fill="none" stroke="#aaa"/><circle cx="225" cy="130" r="4" fill="#ccc"/><path class="signal" d="M225 60C195 80 250 95 225 105S195 120 225 130S255 150 225 165"/></svg></div><div class="arrow">↗</div></article>
 
-    <article class="project reveal" data-category="sensing" data-project="aahaar">
-      <div class="project-index">SYS-01</div>
-      <div class="project-kind">SPECTRAL SENSING / EMBEDDED</div>
-      <h3>Aahaar Scanner</h3>
-      <p>Portable spectral sensing platform for fruit and vegetable analysis using controlled illumination, AS7341 sensing and ESP32-S3 processing.</p>
-      <div class="tags"><span>ESP32-S3</span><span>AS7341</span><span>I²C</span><span>TFT</span><span>DATA</span></div>
-      <div class="project-visual">
-        <svg viewBox="0 0 500 230">
-          <path class="signal" d="M0 175 C35 155 45 165 75 150 S115 95 145 125 S180 45 215 105 S250 60 285 105 S325 40 360 115 S405 85 440 140 S470 100 500 120"/>
-          <line class="gridline" x1="0" y1="190" x2="500" y2="190"/>
-          <line class="gridline" x1="0" y1="130" x2="500" y2="130"/>
-        </svg>
-      </div>
-      <div class="project-arrow">↗</div>
-    </article>
+<article class="project reveal" data-category="power" data-project="bms"><div class="pindex">SYS-03</div><div class="pkind">POWER / BATTERY MONITORING</div><h3>3S Li-ion BMS</h3><p>Battery protection and monitoring architecture for cell voltage, current and temperature supervision.</p><div class="tags"><span>3S LI-ION</span><span>ADC</span><span>CURRENT</span><span>PROTECTION</span></div><div class="visual"><svg viewBox="0 0 450 230"><rect x="55" y="60" width="85" height="115" fill="none" stroke="#888"/><rect x="183" y="60" width="85" height="115" fill="none" stroke="#aaa"/><rect x="311" y="60" width="85" height="115" fill="none" stroke="#888"/><line x1="140" y1="117" x2="183" y2="117" stroke="#777"/><line x1="268" y1="117" x2="311" y2="117" stroke="#777"/></svg></div><div class="arrow">↗</div></article>
 
-    <article class="project reveal" data-category="control" data-project="maglev">
-      <div class="project-index">SYS-02</div>
-      <div class="project-kind">ELECTROMAGNETICS / CONTROL</div>
-      <h3>Electromagnetic Maglev</h3>
-      <p>Closed-loop levitation using Hall feedback, electromagnet actuation, PWM and PID control.</p>
-      <div class="tags"><span>HALL</span><span>PWM</span><span>PID</span><span>SIMULINK</span></div>
-      <div class="project-visual">
-        <svg viewBox="0 0 450 250">
-          <rect x="90" y="32" width="270" height="28" fill="none" stroke="#777"/>
-          <line x1="130" y1="60" x2="130" y2="92" stroke="#555"/>
-          <line x1="320" y1="60" x2="320" y2="92" stroke="#555"/>
-          <circle cx="225" cy="130" r="31" fill="none" stroke="#aaa"/>
-          <circle cx="225" cy="130" r="4" fill="#ccc"/>
-          <path class="signal" d="M225 62 C195 80 250 95 225 102 S195 118 225 130"/>
-          <path class="signal" d="M225 160 C255 180 195 190 225 214"/>
-        </svg>
-      </div>
-      <div class="project-arrow">↗</div>
-    </article>
+<article class="project reveal" data-category="control" data-project="digital"><div class="pindex">SYS-04</div><div class="pkind">DIGITAL DESIGN / HDL</div><h3>Digital Logic & RTL</h3><p>Combinational and sequential logic, FSMs, ripple-carry structures, testbenches and RTL development.</p><div class="tags"><span>VERILOG</span><span>SYSTEMVERILOG</span><span>FSM</span><span>RTL</span></div><div class="visual"><svg viewBox="0 0 500 230"><path d="M0 150H45V80H95V150H145V105H200V150H250V55H300V150H355V95H405V150H500" fill="none" stroke="#aaa" stroke-width="1.5"/></svg></div><div class="arrow">↗</div></article>
 
-    <article class="project reveal" data-category="power" data-project="bms">
-      <div class="project-index">SYS-03</div>
-      <div class="project-kind">POWER / BATTERY MONITORING</div>
-      <h3>3S Li-ion BMS</h3>
-      <p>Battery protection and monitoring architecture for cell voltage, current and temperature supervision.</p>
-      <div class="tags"><span>3S LI-ION</span><span>ADC</span><span>CURRENT</span><span>PROTECTION</span></div>
-      <div class="project-visual">
-        <svg viewBox="0 0 450 230">
-          <rect class="battery" x="55" y="60" width="85" height="115"/>
-          <rect class="battery" x="183" y="60" width="85" height="115"/>
-          <rect class="battery" x="311" y="60" width="85" height="115"/>
-          <line x1="140" y1="117" x2="183" y2="117" stroke="#777"/>
-          <line x1="268" y1="117" x2="311" y2="117" stroke="#777"/>
-          <path class="signal" d="M55 205 H396"/>
-        </svg>
-      </div>
-      <div class="project-arrow">↗</div>
-    </article>
-
-    <article class="project reveal" data-category="control" data-project="digital">
-      <div class="project-index">SYS-04</div>
-      <div class="project-kind">DIGITAL DESIGN / HDL</div>
-      <h3>Digital Logic & RTL</h3>
-      <p>Combinational and sequential logic work including FSMs, ripple-carry structures, testbenches and Verilog/SystemVerilog.</p>
-      <div class="tags"><span>VERILOG</span><span>SV</span><span>FSM</span><span>RTL</span></div>
-      <div class="project-visual">
-        <svg viewBox="0 0 500 230">
-          <path class="pulse-line" d="M0 150 H45 V80 H95 V150 H145 V105 H200 V150 H250 V55 H300 V150 H355 V95 H405 V150 H500"/>
-          <path class="signal" d="M0 180 H500"/>
-        </svg>
-      </div>
-      <div class="project-arrow">↗</div>
-    </article>
-
-  </div>
+</div>
 </section>
 
 <section id="about" class="container">
-  <div class="section-top reveal">
-    <div><div class="section-id">02 / ENGINEERING PROFILE</div><h2 class="section-title">How I work</h2></div>
-    <p class="section-note">The goal is not a pretty prototype. The goal is a system that survives contact with measurements.</p>
-  </div>
-
-  <div class="about">
-    <div class="about-copy reveal">
-      I work across <strong>embedded firmware, electronics, sensors, feedback control and digital design.</strong><br><br>
-      My preferred workflow starts with the physical system: understand the circuit,
-      instrument it, collect real data, test the model and then move the useful parts
-      into firmware.<br><br>
-      That means oscilloscopes, multimeters, serial logs, sensor data and a suspicious
-      amount of debugging before anything deserves to be called finished.
-    </div>
-    <dl class="specs reveal">
-      <div class="spec"><dt>DISCIPLINE</dt><dd>Electrical Engineering</dd></div>
-      <div class="spec"><dt>EDUCATION</dt><dd>CVR College of Engineering</dd></div>
-      <div class="spec"><dt>LOCATION</dt><dd>Hyderabad, India</dd></div>
-      <div class="spec"><dt>GRADUATION</dt><dd>2028</dd></div>
-      <div class="spec"><dt>INTERESTS</dt><dd>Embedded · Control · Electronics</dd></div>
-    </dl>
-  </div>
+<div class="sectiontop reveal"><div><div class="sectionid">02 / ENGINEERING PROFILE</div><h2 class="sectiontitle">How I work</h2></div><p class="note">The objective is a system that survives contact with measurements.</p></div>
+<div class="about"><div class="aboutcopy reveal">I work across <strong>embedded firmware, electronics, sensors, feedback control and digital design.</strong><br><br>My workflow starts with the physical system: understand the circuit, instrument it, collect real data, test the model and move useful behaviour into firmware.<br><br>That means oscilloscopes, multimeters, serial logs, sensor data and a suspicious amount of debugging before anything deserves to be called finished.</div>
+<dl class="specs reveal"><div class="spec"><dt>DISCIPLINE</dt><dd>Electrical Engineering</dd></div><div class="spec"><dt>EDUCATION</dt><dd>CVR College of Engineering</dd></div><div class="spec"><dt>LOCATION</dt><dd>Hyderabad, India</dd></div><div class="spec"><dt>GRADUATION</dt><dd>2028</dd></div><div class="spec"><dt>FOCUS</dt><dd>Embedded · Control · Electronics</dd></div></dl></div>
 </section>
 
 <section class="container">
-  <div class="section-top reveal">
-    <div><div class="section-id">03 / PROCESS</div><h2 class="section-title">From idea to hardware</h2></div>
-  </div>
-  <div class="process reveal">
-    <div class="process-item"><div class="n">01</div><h4>DEFINE</h4><p>Break the problem into measurable electrical and physical requirements.</p></div>
-    <div class="process-item"><div class="n">02</div><h4>BUILD</h4><p>Prototype the circuit, firmware, mechanics and interfaces.</p></div>
-    <div class="process-item"><div class="n">03</div><h4>MEASURE</h4><p>Collect real sensor and system data instead of trusting assumptions.</p></div>
-    <div class="process-item"><div class="n">04</div><h4>ITERATE</h4><p>Use the measurements to change the design and repeat.</p></div>
-  </div>
+<div class="sectiontop reveal"><div><div class="sectionid">03 / PROCESS</div><h2 class="sectiontitle">From idea to hardware</h2></div></div>
+<div class="process reveal"><div><small>01</small><h4>DEFINE</h4><p>Break the problem into measurable electrical and physical requirements.</p></div><div><small>02</small><h4>BUILD</h4><p>Prototype the circuit, firmware, mechanics and interfaces.</p></div><div><small>03</small><h4>MEASURE</h4><p>Collect real sensor and system data instead of trusting assumptions.</p></div><div><small>04</small><h4>ITERATE</h4><p>Use measurements to change the design and repeat.</p></div></div>
 </section>
 
 <section id="lab" class="container">
-  <div class="section-top reveal">
-    <div><div class="section-id">04 / LIVE EXPERIMENT</div><h2 class="section-title">Control loop</h2></div>
-    <p class="section-note">Adjust Kp and Ki. The response curve updates in real time.</p>
-  </div>
-  <div class="lab reveal">
-    <div class="lab-grid">
-      <div>
-        <div class="control"><div class="control-label"><span>Kp</span><b id="kpv">2.0</b></div><input id="kp" type="range" min="0" max="5" value="2" step=".1"></div>
-        <div class="control"><div class="control-label"><span>Ki</span><b id="kiv">0.5</b></div><input id="ki" type="range" min="0" max="3" value=".5" step=".1"></div>
-        <div class="lab-status">LOOP STATUS: <b id="loopstatus">STABLE</b></div>
-      </div>
-      <svg class="chart" viewBox="0 0 700 300" preserveAspectRatio="none">
-        <line x1="0" y1="250" x2="700" y2="250" stroke="#242424"/>
-        <line x1="0" y1="50" x2="700" y2="50" stroke="#242424"/>
-        <path id="response"></path>
-      </svg>
-    </div>
-  </div>
+<div class="sectiontop reveal"><div><div class="sectionid">04 / LIVE EXPERIMENT</div><h2 class="sectiontitle">Control loop simulator</h2></div><p class="note">Change Kp, Ki and setpoint. The response and calculated metrics update live.</p></div>
+<div class="lab reveal"><div class="labgrid"><div>
+<div class="control"><div class="clabel"><span>Kp</span><b id="kpv">2.0</b></div><input id="kp" type="range" min="0" max="5" value="2" step=".1"></div>
+<div class="control"><div class="clabel"><span>Ki</span><b id="kiv">0.5</b></div><input id="ki" type="range" min="0" max="3" value=".5" step=".1"></div>
+<div class="control"><div class="clabel"><span>SETPOINT</span><b id="spv">1.0</b></div><input id="sp" type="range" min=".5" max="1.5" value="1" step=".05"></div>
+<div class="status">LOOP: <b id="loopstatus">STABLE</b></div>
+<div class="metrics"><div class="metric">PEAK<b id="peak">—</b></div><div class="metric">OVERSHOOT<b id="over">—</b></div><div class="metric">FINAL<b id="final">—</b></div></div>
+</div>
+<svg class="chart" viewBox="0 0 700 300" preserveAspectRatio="none"><line x1="0" y1="250" x2="700" y2="250" stroke="#242424"/><line x1="0" y1="50" x2="700" y2="50" stroke="#242424"/><line id="setline" x1="0" y1="100" x2="700" y2="100" stroke="#444" stroke-dasharray="5 5"/><path id="response"/></svg>
+</div></div>
+
+<div class="monitor reveal">
+<div class="monitorbar"><span>LIVE SIGNAL MONITOR / SIMULATED SENSOR STREAM</span><button id="pause" type="button">PAUSE</button></div>
+<div class="wavebox"><svg viewBox="0 0 1000 130" preserveAspectRatio="none"><polyline id="livewave" fill="none" stroke="#aaa" stroke-width="1.5"/></svg></div>
+<div class="monitor-info"><span>CHANNEL <b>F1</b></span><span>RATE <b id="rate">25 Hz</b></span><span>VALUE <b id="sensor">—</b></span><span>STATE <b id="streamstate">RUNNING</b></span></div>
+</div>
 </section>
 
 <section id="stack" class="container">
-  <div class="section-top reveal">
-    <div><div class="section-id">05 / TOOLCHAIN</div><h2 class="section-title">Technical stack</h2></div>
-  </div>
-  <div class="stack reveal">
-    <div class="stack-cell"><span>01</span><h4>C / C++ / Embedded C</h4></div>
-    <div class="stack-cell"><span>02</span><h4>ESP32 / Arduino</h4></div>
-    <div class="stack-cell"><span>03</span><h4>Verilog / SystemVerilog</h4></div>
-    <div class="stack-cell"><span>04</span><h4>MATLAB / Simulink</h4></div>
-    <div class="stack-cell"><span>05</span><h4>I²C / SPI / UART</h4></div>
-    <div class="stack-cell"><span>06</span><h4>PCB / Circuit Design</h4></div>
-    <div class="stack-cell"><span>07</span><h4>Sensor Systems</h4></div>
-    <div class="stack-cell"><span>08</span><h4>Feedback Control</h4></div>
-  </div>
+<div class="sectiontop reveal"><div><div class="sectionid">05 / TOOLCHAIN</div><h2 class="sectiontitle">Technical stack</h2></div></div>
+<div class="stack reveal"><div class="stackcell"><span>01</span><h4>C / C++ / Embedded C</h4></div><div class="stackcell"><span>02</span><h4>ESP32 / Arduino</h4></div><div class="stackcell"><span>03</span><h4>Verilog / SystemVerilog</h4></div><div class="stackcell"><span>04</span><h4>MATLAB / Simulink</h4></div><div class="stackcell"><span>05</span><h4>I²C / SPI / UART</h4></div><div class="stackcell"><span>06</span><h4>PCB / Circuit Design</h4></div><div class="stackcell"><span>07</span><h4>Sensor Systems</h4></div><div class="stackcell"><span>08</span><h4>Feedback Control</h4></div></div>
 </section>
 
 <section id="contact" class="contact container">
-  <div class="section-id">06 / CONTACT</div>
-  <h2 class="reveal">BUILD SOMETHING<br>REAL.</h2>
-  <p class="reveal">Embedded systems, electronics, control and experimental hardware.</p>
-  <div class="contact-links reveal">
-    <a href="mailto:rishi.78935@gmail.com">EMAIL ↗</a>
-    <a href="https://www.linkedin.com/in/rishikesh-a-71139b366/" target="_blank">LINKEDIN ↗</a>
-    <a href="https://github.com/Rishi78935" target="_blank">GITHUB ↗</a>
-  </div>
+<div class="sectionid">06 / CONTACT</div><h2 class="reveal">BUILD SOMETHING<br>REAL.</h2><p class="reveal">Embedded systems, electronics, control and experimental hardware.</p>
+<div class="contactlinks reveal"><a href="mailto:rishi.78935@gmail.com?subject=Engineering%20Project">EMAIL ↗</a><a href="https://www.linkedin.com/in/rishikesh-a-71139b366/" target="_blank">LINKEDIN ↗</a><a href="https://github.com/Rishi78935" target="_blank">GITHUB ↗</a></div>
 </section>
 
 </main>
 
-<footer class="container">
-  <span>© 2026 A. Rishikesh</span>
-  <span>RISHI / ENGINEERING SYSTEMS</span>
-</footer>
+<footer class="container"><span>© 2026 A. Rishikesh</span><span>RISHI / ENGINEERING SYSTEMS</span></footer>
 
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="section-id" id="modalKind">SYSTEM</div>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-    <div class="modal-details">
-      <div class="modal-detail"><strong>HARDWARE</strong><span id="mh"></span></div>
-      <div class="modal-detail"><strong>SOFTWARE</strong><span id="ms"></span></div>
-      <div class="modal-detail"><strong>DOMAIN</strong><span id="md"></span></div>
-      <div class="modal-detail"><strong>STATUS</strong><span id="mx"></span></div>
-    </div>
-  </div>
-</div>
+<div class="modal" id="modal"><div class="modalbox"><button class="close" id="close" type="button">×</button><div class="sectionid" id="mkind"></div><h2 id="mtitle"></h2><p id="mdesc"></p><div class="details"><div class="detail"><strong>HARDWARE</strong><span id="mh"></span></div><div class="detail"><strong>SOFTWARE</strong><span id="ms"></span></div><div class="detail"><strong>DOMAIN</strong><span id="md"></span></div><div class="detail"><strong>STATUS</strong><span id="mx"></span></div></div></div></div>
+
+<div class="command" id="command"><div class="commandbox"><input id="cmdinput" class="commandinput" autocomplete="off" placeholder="Type a command: projects, lab, stack, contact, about"><div class="commandlist" id="cmdlist"></div></div></div>
+<div class="toast" id="toast"></div>
 
 <script>
-const projectData={
- aahaar:{kind:"SYS-01 / SPECTRAL SENSING",title:"Aahaar Scanner",desc:"Portable spectral sensing platform using controlled illumination, AS7341 spectral sensing and ESP32-S3 processing for fruit and vegetable analysis.",hardware:"ESP32-S3 · AS7341 · OLED · TFT",software:"Embedded C/C++ · data processing · ML experiments",domain:"Spectral sensing",status:"Prototype / development"},
+const projects={
+ aahaar:{kind:"SYS-01 / SPECTRAL SENSING",title:"Aahaar Scanner",desc:"Portable spectral sensing platform using controlled illumination, AS7341 sensing and ESP32-S3 processing for fruit and vegetable analysis.",hardware:"ESP32-S3 · AS7341 · OLED · TFT",software:"Embedded C/C++ · data processing · ML experiments",domain:"Spectral sensing",status:"Prototype / development"},
  maglev:{kind:"SYS-02 / CONTROL",title:"Electromagnetic Maglev",desc:"Closed-loop magnetic levitation using Hall-sensor feedback, electromagnet actuation, PWM and PID control.",hardware:"Hall sensor · electromagnet · MCU · MOSFET",software:"Embedded C · PWM · PID · MATLAB · Simulink",domain:"Control systems",status:"Prototype / development"},
  bms:{kind:"SYS-03 / POWER",title:"3S Li-ion BMS",desc:"Battery protection and monitoring architecture focused on individual cell voltage, current and temperature supervision.",hardware:"3S Li-ion · voltage/current sensing",software:"Embedded monitoring firmware",domain:"Battery electronics",status:"Development"},
  digital:{kind:"SYS-04 / DIGITAL DESIGN",title:"Digital Logic & RTL",desc:"Digital design work covering combinational and sequential logic, FSMs, ripple-carry structures, testbenches and RTL development.",hardware:"Digital logic / FPGA-oriented design",software:"Verilog · SystemVerilog · testbenches",domain:"Digital design",status:"Ongoing"}
 };
 const modal=document.getElementById("modal");
-document.querySelectorAll(".project").forEach(card=>card.addEventListener("click",()=>{
- const p=projectData[card.dataset.project];
- document.getElementById("modalKind").textContent=p.kind;
- document.getElementById("modalTitle").textContent=p.title;
- document.getElementById("modalDesc").textContent=p.desc;
- document.getElementById("mh").textContent=p.hardware;
- document.getElementById("ms").textContent=p.software;
- document.getElementById("md").textContent=p.domain;
- document.getElementById("mx").textContent=p.status;
- modal.classList.add("open");document.body.style.overflow="hidden";
-}));
-function closeModal(){modal.classList.remove("open");document.body.style.overflow=""}
-document.getElementById("modalClose").onclick=closeModal;
-modal.onclick=e=>{if(e.target===modal)closeModal()};
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+function openProject(id){const p=projects[id];if(!p)return;document.getElementById("mkind").textContent=p.kind;document.getElementById("mtitle").textContent=p.title;document.getElementById("mdesc").textContent=p.desc;document.getElementById("mh").textContent=p.hardware;document.getElementById("ms").textContent=p.software;document.getElementById("md").textContent=p.domain;document.getElementById("mx").textContent=p.status;modal.classList.add("open");document.body.style.overflow="hidden"}
+function closeProject(){modal.classList.remove("open");document.body.style.overflow=""}
+document.querySelectorAll(".project").forEach(p=>p.addEventListener("click",()=>openProject(p.dataset.project)));
+document.getElementById("close").onclick=closeProject;modal.onclick=e=>{if(e.target===modal)closeProject()};
 
-document.querySelectorAll(".filter").forEach(btn=>btn.onclick=()=>{
- document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
- btn.classList.add("active");
- const f=btn.dataset.filter;
- document.querySelectorAll(".project").forEach(p=>p.style.display=(f==="all"||p.dataset.category===f)?"":"none");
-});
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");const f=b.dataset.filter;document.querySelectorAll(".project").forEach(p=>p.style.display=f==="all"||p.dataset.category===f?"":"none")});
 
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}})
-},{threshold:.1});
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");observer.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
 
-const kp=document.getElementById("kp"),ki=document.getElementById("ki"),curve=document.getElementById("response");
-function updateLoop(){
- const Kp=+kp.value,Ki=+ki.value;
- document.getElementById("kpv").textContent=Kp.toFixed(1);
- document.getElementById("kiv").textContent=Ki.toFixed(1);
- let d="";
- for(let x=0;x<=700;x+=5){
-  const t=x/700;
-  const damping=.62+Kp*.105-Ki*.025;
-  let y=250-175*(1-Math.exp(-damping*t*6))*(1+.15*Math.sin(t*(5+Kp*2)*Math.PI)*(1-Ki*.15));
-  if(Ki>2.4)y+=Math.sin(t*35)*18*t;
-  d+=(x===0?"M ":"L ")+x+","+y+" ";
+/* CONTROL SIMULATOR */
+const kp=document.getElementById("kp"),ki=document.getElementById("ki"),sp=document.getElementById("sp"),curve=document.getElementById("response"),setline=document.getElementById("setline");
+function simulate(){
+ const Kp=+kp.value,Ki=+ki.value,set=+sp.value;
+ document.getElementById("kpv").textContent=Kp.toFixed(1);document.getElementById("kiv").textContent=Ki.toFixed(1);document.getElementById("spv").textContent=set.toFixed(2);
+ setline.setAttribute("y1",250-set*150);setline.setAttribute("y2",250-set*150);
+ let pts=[],max=0,final=0;
+ for(let x=0;x<=700;x+=4){
+  const t=x/700;const damping=.58+Kp*.11-Ki*.03;const freq=4+Kp*1.8;
+  let y=set*(1-Math.exp(-damping*t*6))*(1+.18*Math.sin(t*freq*Math.PI)*(1-Ki*.12));
+  if(Ki>2.4)y+=Math.sin(t*32)*.08*t;
+  max=Math.max(max,y);if(x===700)final=y;
+  const py=250-y*150;pts.push((x===0?"M ":"L ")+x+","+py);
  }
- curve.setAttribute("d",d);
- document.getElementById("loopstatus").textContent=Ki>2.4?"OSCILLATING":Kp>4?"FAST RESPONSE":"STABLE";
+ curve.setAttribute("d",pts.join(" "));
+ const overshoot=Math.max(0,(max-set)/set*100);
+ document.getElementById("peak").textContent=max.toFixed(2);
+ document.getElementById("over").textContent=overshoot.toFixed(1)+"%";
+ document.getElementById("final").textContent=final.toFixed(2);
+ document.getElementById("loopstatus").textContent=Ki>2.4?"OSCILLATING":overshoot>12?"OVERSHOOT":"STABLE";
 }
-kp.oninput=updateLoop;ki.oninput=updateLoop;updateLoop();
+[kp,ki,sp].forEach(x=>x.oninput=simulate);simulate();
 
-const links=[...document.querySelectorAll(".nav-links a")];
-const sections=[...document.querySelectorAll("section[id]")];
-window.addEventListener("scroll",()=>{
- let current="";
- sections.forEach(s=>{if(scrollY>=s.offsetTop-180)current=s.id});
- links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+current));
-},{passive:true});
+/* LIVE SIGNAL MONITOR */
+let running=true,phase=0,raf=0;
+const wave=document.getElementById("livewave"),sensor=document.getElementById("sensor");
+function stream(){
+ if(running){
+  let pts=[],last=0;
+  for(let x=0;x<=1000;x+=10){const v=50+23*Math.sin(x/75+phase)+7*Math.sin(x/19+phase*1.7);pts.push(x+","+v);last=v}
+  wave.setAttribute("points",pts.join(" "));sensor.textContent=Math.round(1200+last*9);
+  phase+=.07;
+ }
+ raf=requestAnimationFrame(stream);
+}
+document.getElementById("pause").onclick=e=>{running=!running;e.target.textContent=running?"PAUSE":"RESUME";document.getElementById("streamstate").textContent=running?"RUNNING":"PAUSED"};
+stream();
+
+/* COMMAND PALETTE */
+const commands=[
+ ["Go to Projects","projects","work"],["Go to About","about","about"],["Open Control Lab","control lab","lab"],["Go to Stack","stack","stack"],["Contact","contact","contact"],["Open Aahaar Scanner","aahaar","project"],["Open Maglev","maglev","project"],["Open BMS","bms","project"],["Open Digital Logic","digital","project"]
+];
+const command=document.getElementById("command"),input=document.getElementById("cmdinput"),list=document.getElementById("cmdlist");let selected=0;
+function renderCommands(q=""){const f=commands.filter(c=>(c[0]+" "+c[1]).toLowerCase().includes(q.toLowerCase()));selected=Math.min(selected,Math.max(0,f.length-1));list.innerHTML=f.map((c,i)=>'<div class="commanditem '+(i===selected?"selected":"")+' data-i="'+i+'"><span>'+c[0]+'</span><kbd>'+c[1]+'</kbd></div>').join("");list.querySelectorAll(".commanditem").forEach(el=>el.onclick=()=>runCommand(f[+el.dataset.i]))}
+function openCommand(){command.classList.add("open");input.value="";renderCommands();setTimeout(()=>input.focus(),20)}
+function closeCommand(){command.classList.remove("open")}
+function runCommand(c){closeCommand();if(c[2]==="project"){openProject(c[1]);return}document.getElementById(c[2]).scrollIntoView({behavior:"smooth"});}
+document.getElementById("openCmd").onclick=openCommand;document.getElementById("heroCmd").onclick=openCommand;
+input.oninput=()=>{selected=0;renderCommands(input.value)};
+input.onkeydown=e=>{const items=list.querySelectorAll(".commanditem");if(e.key==="ArrowDown"){e.preventDefault();selected=Math.min(selected+1,items.length-1);renderCommands(input.value)}else if(e.key==="ArrowUp"){e.preventDefault();selected=Math.max(selected-1,0);renderCommands(input.value)}else if(e.key==="Enter"&&items[selected]){e.preventDefault();items[selected].click()}else if(e.key==="Escape")closeCommand()};
+command.onclick=e=>{if(e.target===command)closeCommand()};
+document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openCommand()}if(e.key==="Escape"){closeProject();closeCommand()}});
+
+/* ACTIVE NAV */
+const navlinks=[...document.querySelectorAll(".links a")],sections=[...document.querySelectorAll("section[id]")];
+window.addEventListener("scroll",()=>{let cur="";sections.forEach(s=>{if(scrollY>=s.offsetTop-180)cur=s.id});navlinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+cur))},{passive:true});
 </script>
-
 </body>
 </html>
