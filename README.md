@@ -1,6 +1,6 @@
 # A. Rishikesh
 
-Electrical Engineering student building systems at the intersection of **embedded hardware, sensing, control, and edge AI**.
+Electrical Engineering student focused on **embedded systems, robotics, and electronics R&D**.
 
 ## What I build
 
@@ -10,7 +10,7 @@ Electrical Engineering student building systems at the intersection of **embedde
 
 ## Current focus
 
-**Embedded Systems · Edge AI · Spectral Sensing · Control Systems · PCB Design**
+**Embedded Systems · Robotics · Electronics R&D · Sensors · Control Systems · PCB Design · Power Systems**
 
 ## Hardware
 
@@ -42,13 +42,10 @@ Measured result
 
 ## Featured work
 
-### Aahaar Scanner
-Portable spectral sensing platform using AS7341 / AS7265x sensors and an ESP32-S3. The project covers optics, hardware integration, dataset collection, feature processing, and on-device inference.
+### Aahaar Scanner: Portable Fruit Quality Sensing Device
+Working prototype combining spectral sensing, hardware integration, dataset collection, feature processing, and on-device inference. Current validated dataset work focuses on banana; AS7265x was an earlier prototype stage.
 
-### AI Automation Agent
-A local automation system designed to close the embedded-development loop: generate firmware → compile → upload → inspect serial output → diagnose → retry.
-
-### Maglev Motor Experiment
+### Maglev: Electromagnetic Levitation & PID Control
 Experimental electromagnetic levitation and control work involving Hall sensing, PWM-driven electromagnets, system identification, and PID control.
 
 ## Portfolio
