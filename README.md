@@ -1,39 +1,45 @@
 # A. Rishikesh
 
-Electrical Engineering student focused on **embedded systems, robotics, and electronics R&D**.
+**Electrical Engineering student focused on embedded systems, robotics, and electronics R&D.**
+
+Open to internships · Hyderabad, India
 
 ## What I build
 
-- 🔬 **Aahaar Scanner** — portable spectral sensing and embedded ML for produce analysis
-- 🤖 **AI Automation Agent** — local AI-assisted firmware compile, upload, debug, and retry workflow
-- 🧲 **Maglev Motor Experiment** — electromagnetic levitation and MCU-based feedback control
+- 🔬 **Aahaar Scanner** — portable spectral sensing and embedded hardware for fruit quality analysis
+- 🧲 **Maglev: Electromagnetic Levitation & PID Control** — Hall-sensor feedback, electromagnets, PWM, and PID control
+- 🔋 **3S Li-ion Battery Protection & Monitoring System** — planned battery electronics project
 
 ## Current focus
 
-**Embedded Systems · Robotics · Electronics R&D · Sensors · Control Systems · PCB Design · Power Systems**
+**Electrical/Electronics R&D · Embedded Systems · Robotics & Control · Sensors & Instrumentation · Power/Battery Systems · Verilog/SystemVerilog**
 
 ## Hardware
 
 ESP32-S3 · AS7341 · AS7265x · Raspberry Pi Pico · ESP8266 · OLED/TFT displays · Li-ion power systems
 
-## Software
+## Software & Tools
 
-C/C++ · Python · Arduino · arduino-cli · Jupyter · MATLAB/Simulink · TinyML
+C · C++ · Embedded C · Arduino IDE · PlatformIO · VS Code · Jupyter Notebook · MATLAB · Simulink · EasyEDA · Proteus
+
+## Interfaces
+
+I²C · SPI · UART · ADC · GPIO · PWM · BLE · Wi-Fi
 
 ## Engineering approach
 
-I prefer building the complete system rather than isolated demos:
+I prefer building complete systems rather than isolated demos:
 
 ```text
 Problem
   ↓
-Hardware / Optics
+Hardware / Circuit
   ↓
 Data acquisition
   ↓
 Experiment + validation
   ↓
-Algorithm / ML
+Control / Processing
   ↓
 Embedded implementation
   ↓
@@ -43,10 +49,12 @@ Measured result
 ## Featured work
 
 ### Aahaar Scanner: Portable Fruit Quality Sensing Device
-Working prototype combining spectral sensing, hardware integration, dataset collection, feature processing, and on-device inference. Current validated dataset work focuses on banana; AS7265x was an earlier prototype stage.
+
+Working prototype combining spectral sensing, embedded hardware, dataset collection, and on-device inference. Current validated dataset work focuses on banana. AS7341 is the current sensor platform, with AS7265x used during an earlier prototype stage. Schematic and PCB design are part of the project.
 
 ### Maglev: Electromagnetic Levitation & PID Control
-Experimental electromagnetic levitation and control work involving Hall sensing, PWM-driven electromagnets, system identification, and PID control.
+
+Experimental electromagnetic levitation system using an electromagnet, Hall-sensor feedback, MCU control, PWM, and PID feedback. Physical levitation has been achieved and development is ongoing.
 
 ## Portfolio
 
@@ -60,4 +68,4 @@ Experimental electromagnetic levitation and control work involving Hall sensing,
 
 ---
 
-*Build it. Measure it. Then decide whether it actually works.*
+**Measure → Build → Test → Iterate**
